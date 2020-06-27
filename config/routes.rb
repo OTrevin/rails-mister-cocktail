@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   patch 'cocktails/:id', to: 'cocktails#update'
   delete 'cocktails/:id', to: 'cocktails#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get 'doses/new'
-  get 'doses/create'
+  resources :cocktails do
+    resources :doses, only: [:new, :create]
+  end
 end
